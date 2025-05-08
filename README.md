@@ -24,62 +24,6 @@ XML Configuration (No Java-based or Annotation-only config)
 ![image](https://github.com/user-attachments/assets/4a03c927-5f3c-4cdc-88cb-e41128fde294)
 
 
-⚙️ Configuration
-
-applicationContext.xml
-
-<!-- HikariCP DataSource -->
-<bean id="hkDs" class="com.zaxxer.hikari.HikariDataSource">
-  <property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
-  <property name="jdbcUrl" value="jdbc:mysql://<host>:<port>/<db>" />
-  <property name="username" value="root" />
-  <property name="password" value="root" />
-</bean>
-
-<!-- SessionFactory with Hibernate -->
-<bean id="localSesFact" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
-  <property name="dataSource" ref="hkDs" />
-  <property name="annotatedClasses">
-    <list>
-      <value>com.nt.entity.Employee</value>
-    </list>
-  </property>
-  <property name="hibernateProperties">
-    <props>
-      <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
-      <prop key="hibernate.hbm2ddl.auto">update</prop>
-      <prop key="hibernate.show_sql">true</prop>
-    </props>
-  </property>
-</bean>
-
-<!-- HibernateTemplate -->
-<bean id="ht" class="org.springframework.orm.hibernate5.HibernateTemplate">
-  <property name="sessionFactory" ref="localSesFact" />
-</bean>
-
-<!-- Transaction Manager -->
-<bean id="hbTxMgmr" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
-  <property name="sessionFactory" ref="localSesFact" />
-</bean>
-
-<context:component-scan base-package="com.nt" />
-<tx:annotation-driven transaction-manager="hbTxMgmr" />
-
-🧾 Maven Dependencies (pom.xml)
-Includes key dependencies for:
-
-Spring Context, ORM
-
-Hibernate Core
-
-HikariCP for efficient pooling
-
-Lombok (Optional)
-
-MySQL Connector
-
-📌 See full pom.xml in the project root.
 
 🏃 How to Run
 Set up the MySQL database:
@@ -101,23 +45,6 @@ Copy
 Edit
 java -cp target/ORMProj01-CURDOperations-0.0.1-SNAPSHOT.jar com.nt.test.YourTestClass
 
-🧪 Example Entity
-java
-Copy
-Edit
-@Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class Employee {
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer empId;
-  
-  private String name;
-  private String role;
-  private Double salary;
-}
 
 ✨ Features
 XML-based Spring configuration
