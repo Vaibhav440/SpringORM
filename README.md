@@ -20,18 +20,8 @@ Maven
 XML Configuration (No Java-based or Annotation-only config)
 
 🗂️ Project Structure
-src/
-├── main/
-│   ├── java/
-│   │   └── com.nt/
-│   │       ├── config/          # (if any config classes)
-│   │       ├── dao/             # DAO interfaces & implementations
-│   │       ├── entity/          # Hibernate entity classes
-│   │       ├── service/         # Service interfaces & implementations
-│   │       └── test/            # Test or Runner class
-│   └── resources/
-│       └── applicationContext.xml   # Spring configuration (XML)
-└── pom.xml                        # Maven dependencies
+![image](https://github.com/user-attachments/assets/4a03c927-5f3c-4cdc-88cb-e41128fde294)
+
 
 ⚙️ Configuration
 
